@@ -1,0 +1,27 @@
+<h1>User list</h1>
+
+<% unless @users.empty? %>
+  <p>
+  <table>
+    <tr>
+      <td align='center'><b>Name</b></td>
+      <td><b>Login</b></td>
+      <td colspan=3 align='center'><b>Balance</b></td>
+    </tr>
+    <% User.ordered_by_last_name.each do |u| %>
+      <tr>
+        <td><%= u.full_name %></td>
+        <td><%= link_to "#{u.login}", user_path(u) %></td>
+        <td id="user_<%= "#{u.id}" %>_balance"><%= to_currency u.balance %></td>
+        <td>
+          <% remote_form_for u, :url => user_path(u), :method => :put do |f| %>
+            <%= f.text_field :balance, :size => 5, :id => "user_#{u.id}_balance_input" %>
+            <%= f.submit "Update", :id => "user_#{u.id}_submit" %>
+          <% end %>
+        </td>
+        <td><%= link_to "Edit account", edit_user_path(u) %></td>
+      </tr>
+    <% end %>
+  </table>
+  </p>
+<% end %>

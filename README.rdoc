@@ -1,0 +1,42 @@
+= Luncher
+
+This application is meant to help with ordering lunches in companies and workgroups.
+
+== What does Luncher provide?
+
+1. User registration (password recovery not implemented yet).
+2. Admin account to manage lunch options, user balances, and order lists.
+3. Refundable lunches (e.g. partially covered by company).
+
+== What's still missing?
+
+1. Proper functional/integration tests.
+2. Password recovery (the code is there, but not tested and no interface is provided).
+3. Automatic system locking at the time specified in configuration.
+4. One-click e-mail notification sending (triggered by admin when the lunches arrive).
+5. Lunch vendors interface (to define them and later select a vendor when adding lunches).
+6. Configuration page:
+    * amount of mouney refunded by company per lunch,
+    * amount of refunded lunches per day,
+    * time of system locking/unlocking,
+     
+7. FUN!!! Rating lunches, comments, suggestions, etc. :)
+8. ...?
+
+== Requirements
+
+Authorization is based on AuthLogic (http://github.com/binarylogic/authlogic), and administrator privileges are implemented using Lockdown (http://stonean.com/page/lockdown). Two gems are required:
+
+  $ sudo gem install authlogic lockdown
+
+
+== LICENSE
+(The MIT License)
+
+© 2010-* Dominik Kapusta, d at ayoy dot net
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

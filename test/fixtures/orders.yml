@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  lunch_id: 1
+  user_id: 1
+  total: 5
+
+two:
+  lunch_id: 2
+  user_id: 2
+  total: 10
+
+without_lunch_id:
+  user_id: 128945
+  total: 598.543
+  
+without_user_id:
+  lunch_id: 77771
+  total: 500000
+
+without_total:
+  lunch_id: 900
+  user_id: 400

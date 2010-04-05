@@ -1,0 +1,7 @@
+<h1>Add new lunch</h1>
+
+<% form_for @lunch, :url => lunches_path do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Add" %>
+<% end %>

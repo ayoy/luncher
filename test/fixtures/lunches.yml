@@ -1,0 +1,45 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2010-04-03
+  vendor: MyString
+  name: MyString
+  description: MyText
+  price: 5
+
+two:
+  date: 2010-04-03
+  vendor: MyString
+  name: MyString
+  description: MyText
+  price: 5
+
+without_date:
+  vendor: MyString
+  name: MyString
+  description: MyText
+  price: 5
+  
+without_vendor:
+  date: 2010-04-03
+  name: MyString
+  description: MyText
+  price: 5
+
+without_name:
+  date: 2010-04-03
+  vendor: MyString
+  description: MyText
+  price: 5
+
+without_description:
+  date: 2010-04-03
+  vendor: MyString
+  name: MyString
+  price: 5
+
+without_price:
+  date: 2010-04-03
+  vendor: MyString
+  name: MyString
+  description: MyText

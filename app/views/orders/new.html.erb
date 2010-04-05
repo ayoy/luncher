@@ -1,0 +1,37 @@
+<h2>Order lunch</h2>
+<p><%= select_date @date, :start_year => 2010, :end_year => 2020 %></p>
+
+<p>
+  <b>Current balance:</b>
+  <%=h to_currency current_user.balance %>
+</p>
+
+<% form_for @order, orders_url do |f| %>
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        <td><b>Vendor</b></td>
+        <td><b>ID</b></td>
+        <td><b>Description</b></td>
+        <td><b>Price</b></td>
+      </tr>
+    </thead>
+    <tbody id='lunches_list'>
+      <% Lunch.by_date(@date).ordered_by_name.each do |lunch| %>
+        <%= render :partial => "lunches/lunch_to_order", :object => lunch %>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan=5 id='submit_buttons'>
+          <%= f.submit "Order" %>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+<% end %>
+
+<%= observe_field :date_year, :url => { :controller => 'lunches', :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+<%= observe_field :date_month, :url => { :controller => 'lunches', :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+<%= observe_field :date_day, :url => { :controller => 'lunches', :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>

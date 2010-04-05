@@ -1,0 +1,3 @@
+page.replace_html 'lunches_list', :partial => 'lunch_to_show', :collection => @lunches
+page.visual_effect :highlight, 'lunches_list'
+page.replace_html 'notice', ''

@@ -1,0 +1,17 @@
+<%= form.label :date %><br />
+<%= form.date_select :date, :start_year => 2010, :end_year => 2020 %><br />
+<br />
+<%= form.label :vendor %><br />
+<%= form.text_field :vendor %><br />
+<br />
+<%= form.label :name %><br />
+<%= form.text_field :name, :size => 5 %><br />
+<br />
+<%= form.label :description %><br />
+<%= form.text_area :description, :rows => 5 %><br />
+<br />
+<%= form.label :refundable %>
+<%= form.check_box :refundable %><br />
+<br />
+<%= form.label :price, "Price (not discounted)", :id => 'price_label' %><br />
+<%= form.text_field :price, :size => 5 %> zł<br />

@@ -1,0 +1,1 @@
+page.replace_html "user_#{@user.id}_balance", number_to_currency(@user.balance, :precision => 2, :unit => "zł", :format => "%n%u")

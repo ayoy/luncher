@@ -1,0 +1,13 @@
+<% if @user == current_user %>
+  <h1>Edit My Account</h1>
+<% else %>
+  <h1>Edit <%= @user.login %> Account</h1>
+<% end %>
+
+<% form_for @user, :url => user_path(@user) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<br /><%= link_to "My Profile", account_path %>

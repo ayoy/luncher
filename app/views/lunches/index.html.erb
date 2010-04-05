@@ -1,0 +1,29 @@
+<h2>Available lunch options</h2>
+
+<p><%= select_date @date, :start_year => 2010, :end_year => 2020 %></p>
+<%= observe_field :date_year, :url => { :action => 'show_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+<%= observe_field :date_month, :url => { :action => 'show_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+<%= observe_field :date_day, :url => { :action => 'show_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+
+<p><%= link_to "Add lunch option", new_lunch_path %></p>
+<p>
+<table>
+  <thead>
+    <tr>
+      <td><b>Vendor</b></td>
+      <td><b>ID</b></td>
+      <td><b>Description</b></td>
+      <td><b>Refunded?</b></td>
+      <td><b>Price*</b></td>
+    </tr>
+  </thead>
+  <tbody id='lunches_list'>
+    <%= render :partial => 'lunch_to_show', :collection => @lunches %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan=5>* discounted price if applicable</td>
+    </tr>
+  </tfoot>
+</table>
+</p>

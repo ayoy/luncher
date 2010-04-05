@@ -1,0 +1,11 @@
+<tr>
+  <td align="center"><%= order.lunch.vendor %></td>
+  <td align="center"><%= order.lunch.name %></td>
+  <td><%= order.lunch.description %></td>
+  <td>
+    <%= to_currency order.total %>
+  </td>
+  <td>
+    <%= link_to "Remove", order_path(order), :method => :delete %>
+  </td>
+</tr>

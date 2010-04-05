@@ -1,0 +1,15 @@
+<tr>
+  <td>
+    <% if current_user.can_order_lunch?(lunch_to_order) %>
+      <%= radio_button :order, :lunch_id, lunch_to_order.id %>
+    <% else %>
+      <%= radio_button :order, :lunch_id, lunch_to_order.id, :disabled => 'true' %>
+    <% end %>
+  </td>
+  <td align="center"><%= lunch_to_order.vendor %></td>
+  <td align="center"><%= lunch_to_order.name %></td>
+  <td><%= lunch_to_order.description %></td>
+  <td>
+    <%= to_currency lunch_to_order.price_for_user(current_user) %>
+  </td>
+</tr>
