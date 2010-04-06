@@ -3,10 +3,8 @@ class OrdersController < ApplicationController
   before_filter :require_user, :except => [:find_all_by_date, :index]
 
   def index
-    redirect_to :action => :find_all_by_date,
-      :year => Date.current.year,
-      :month => Date.current.month,
-      :day => Date.current.day
+    @date = Date.current
+    @orders = Order.by_date(@date).ordered_by_lunch_name.group_by { |o| o.lunch.name }
   end
 
   def my
@@ -29,6 +27,10 @@ class OrdersController < ApplicationController
                        params[:month].to_i,
                        params[:day].to_i)
     @orders = Order.by_date(@date).ordered_by_lunch_name.group_by { |o| o.lunch.name }
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

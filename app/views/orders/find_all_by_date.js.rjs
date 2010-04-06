@@ -1,0 +1,4 @@
+page.replace_html 'date', @date
+page.replace_html 'orders_list', :partial => 'orders', :object => @orders
+page.visual_effect :highlight, 'orders_list'
+page.replace_html 'notice', ''

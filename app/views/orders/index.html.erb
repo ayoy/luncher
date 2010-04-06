@@ -1,27 +1,11 @@
-<h2>Your orders</h2>
+<h2>Orders for <span id='date'><%= @date %></span></h2>
+
 <p><%= select_date @date, :start_year => 2010, :end_year => 2020 %></p>
 
-<p>
-  <b>Current balance:</b>
-  <%=h to_currency current_user.balance %>
-</p>
+<div id='orders_list'>
+  <%= render :partial => 'orders', :object => @orders %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <td><b>Vendor</b></td>
-      <td><b>ID</b></td>
-      <td><b>Description</b></td>
-      <td><b>Price</b></td>
-    </tr>
-  </thead>
-  <tbody id='orders_list'>
-    <%= render :partial => "order", :collection => @orders %>
-  </tbody>
-</table>
-
-<p><%= link_to "Place Order", new_order_path %></p>
-
-<%= observe_field :date_year, :url => { :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
-<%= observe_field :date_month, :url => { :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
-<%= observe_field :date_day, :url => { :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+<%= observe_field :date_year, :url => { :action => 'find_all_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+<%= observe_field :date_month, :url => { :action => 'find_all_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+<%= observe_field :date_day, :url => { :action => 'find_all_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
