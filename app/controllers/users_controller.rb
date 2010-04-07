@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Account registered!"
-      add_lockdown_session_values
+      add_lockdown_session_values(@user)
       redirect_to account_url
     else
       render :action => :new
