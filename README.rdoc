@@ -4,24 +4,23 @@ This application is meant to help with ordering lunches in companies and workgro
 
 == What does Luncher provide?
 
-1. User registration (password recovery not implemented yet).
+1. User registration (together with password recovery).
 2. Admin account to manage lunch options, user balances, and order lists.
 3. Refundable lunches (e.g. partially covered by company).
 
 == What's still missing?
 
 1. Proper functional/integration tests.
-2. Password recovery (the code is there, but not tested and no interface is provided).
-3. Automatic system locking at the time specified in configuration.
-4. One-click e-mail notification sending (triggered by admin when the lunches arrive).
-5. Lunch vendors interface (to define them and later select a vendor when adding lunches).
-6. Configuration page:
+2. Automatic system locking at the time specified in configuration.
+3. One-click e-mail notification sending (triggered by admin when the lunches arrive).
+4. Lunch vendors interface (to define them and later select a vendor when adding lunches).
+5. Configuration page:
     * amount of mouney refunded by company per lunch,
     * amount of refunded lunches per day,
     * time of system locking/unlocking,
      
-7. FUN!!! Rating lunches, comments, suggestions, etc. :)
-8. ...?
+6. FUN!!! Rating lunches, comments, suggestions, etc. :)
+7. ...?
 
 == Requirements
 

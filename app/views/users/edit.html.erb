@@ -1,7 +1,7 @@
 <% if @user == current_user %>
-  <h1>Edit My Account</h1>
+  <h2>Edit My Account</h2>
 <% else %>
-  <h1>Edit <%= @user.login %> Account</h1>
+  <h2>Edit <%= @user.login %> Account</h2>
 <% end %>
 
 <% form_for @user, :url => user_path(@user) do |f| %>

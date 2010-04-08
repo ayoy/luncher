@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
               :order => "last_name ASC",
               :conditions => "login != 'root'"
   
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    Notifier.deliver_password_reset_instructions(self)
+  end
+
   def full_name
     [last_name, first_name].join(' ')
   end
