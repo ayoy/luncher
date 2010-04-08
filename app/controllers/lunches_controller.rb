@@ -37,6 +37,9 @@ class LunchesController < ApplicationController
   end
 
   def create
+    params[:lunch][:vendor_id] = Vendor.find_by_name(params[:lunch][:vendor]).id
+    params[:lunch].delete(:vendor)
+    puts "ID = #{Vendor.find_by_name(params[:lunch][:vendor_id]).id}"
     @lunch = Lunch.new(params[:lunch])
     if @lunch.save
       flash[:notice] = "Lunch added!"

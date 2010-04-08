@@ -1,9 +1,10 @@
 class Lunch < ActiveRecord::Base
+  belongs_to :vendor
   has_many :orders
   has_many :users, :through => :orders
 
   validates_presence_of :date
-  validates_presence_of :vendor
+  validates_presence_of :vendor_id
   validates_presence_of :name
   validates_presence_of :description
   validates_uniqueness_of :name, :scope => :date

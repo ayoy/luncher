@@ -2,7 +2,7 @@
 <%= form.date_select :date, :start_year => 2010, :end_year => 2020 %><br />
 <br />
 <%= form.label :vendor %><br />
-<%= form.text_field :vendor %><br />
+<%= form.select :vendor, Vendor.all.map {|v| "<option>#{v.name}</option>"}.join('') %><br />
 <br />
 <%= form.label :name %><br />
 <%= form.text_field :name, :size => 5 %><br />
