@@ -37,9 +37,8 @@ class LunchesController < ApplicationController
   end
 
   def create
-    params[:lunch][:vendor_id] = Vendor.find_by_name(params[:lunch][:vendor]).id
-    params[:lunch].delete(:vendor)
-    puts "ID = #{Vendor.find_by_name(params[:lunch][:vendor_id]).id}"
+#    params[:lunch][:vendor_id] = Vendor.find_by_name(params[:lunch][:vendor]).id
+#    params[:lunch].delete(:vendor)
     @lunch = Lunch.new(params[:lunch])
     if @lunch.save
       flash[:notice] = "Lunch added!"
@@ -50,6 +49,8 @@ class LunchesController < ApplicationController
   end
 
   def update
+#    params[:lunch][:vendor_id] = Vendor.find_by_name(params[:lunch][:vendor]).id
+#    params[:lunch].delete(:vendor)
     @lunch = Lunch.find(params[:id])
     if @lunch.update_attributes(params[:lunch])
       flash[:notice] = "Lunch info updated!"

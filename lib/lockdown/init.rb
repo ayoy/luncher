@@ -119,7 +119,8 @@ Lockdown::System.configure do
     with_controller(:users).
     only_methods(:show, :edit, :update, :index).
     and_controller(:orders).
-    and_controller(:lunches)
+    and_controller(:lunches).
+    and_controller(:vendors)
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Built-in user groups

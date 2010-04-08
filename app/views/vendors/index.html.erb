@@ -1,0 +1,12 @@
+<h2>Lunch vendors</h2>
+
+<ol>
+<% @vendors.each do |v| %>
+  <li>
+    <%= v.name %>
+    <%= link_to "Edit", edit_vendor_path(v) %>
+    <%= link_to "Remove", vendor_path(v), :method => :delete %>
+  </li>
+<% end %>
+</ol>
+<%= link_to "Add vendor", new_vendor_path %>

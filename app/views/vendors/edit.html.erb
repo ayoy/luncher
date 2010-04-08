@@ -1,0 +1,7 @@
+<h2>Edit lunch vendor</h2>
+
+<% form_for @vendor, :url => vendor_path(@vendor) do |f| %>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Update" %>
+<% end %>
