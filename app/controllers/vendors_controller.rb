@@ -17,6 +17,7 @@ class VendorsController < ApplicationController
     vendor = Vendor.find(params[:id])
     Notifier.deliver_lunch_notification(vendor, vendor.users_for_date(Date.current))
     flash[:notice] = "E-mail notification sent for #{vendor}"
+    vendor.update_attribute(:notification_sent_on, Date.current)
     redirect_to vendors_url
   end
 

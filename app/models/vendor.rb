@@ -16,4 +16,8 @@ class Vendor < ActiveRecord::Base
   def users_for_date(date)
     orders.by_date(date).map(&:user).uniq
   end
+
+  def notification_sent_today?
+    notification_sent_on == Date.current
+  end
 end

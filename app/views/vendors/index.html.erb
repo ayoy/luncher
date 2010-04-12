@@ -7,7 +7,11 @@
     <%= link_to "Edit", edit_vendor_path(v) %>
     <%= link_to "Remove", vendor_path(v), :method => :delete %>
     - <%= pluralize v.orders_count_for_date(Date.current), "order" %> for today
+    <% if v.notification_sent_today? %>
+    - Notification already sent today, <%= link_to "click to resend", {:action => 'notify_users', :id => v.id} %>
+    <% else %>
     - <%= link_to "Send e-mail notification", {:action => 'notify_users', :id => v.id} %>
+    <% end %>
   </li>
 <% end %>
 </ol>
