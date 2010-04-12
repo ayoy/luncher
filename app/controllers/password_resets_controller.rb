@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user
       @user.deliver_password_reset_instructions!
-      flash[:notice] = "Instructions to reset your password" +
+      flash[:notice] = "Instructions to reset your password " +
         "have been emailed to you.\n" +
         "Please check your email."
       redirect_to root_url
