@@ -19,14 +19,19 @@ ActionController::Routing::Routes.draw do |map|
               :month      => /\d{1,2}/,
               :day        => /\d{1,2}/
 
+  map.connect 'vendors/:id/notify_users',
+              :controller => 'vendors',
+              :action => 'notify_users',
+              :id => /\d+/
+
   map.resource :account, :controller => "users"
+  map.resource :user_session
   map.resources :users
   map.resources :lunches
-  map.resource :user_session
   map.resources :orders
   map.resources :password_resets
   map.resources :vendors
-  
+
   map.root :controller => "user_sessions", :action => "new"
   map.login '/login', :controller => 'user_sessions', :action => 'new'
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'

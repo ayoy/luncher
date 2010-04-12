@@ -1,15 +1,5 @@
 <h2>Orders for <%= @date %></h2>
 
-<% unless @orders.empty? %>
-  <p><b>Total:</b> <%= pluralize @orders.values.inject { |res,val| res + val }.size, "order" %></p>
-  <% @orders.each_key do |name| %>
-    <p><%= name %> - <%= pluralize @orders[name].size, "order" %>:
-      <ul>
-        <% @orders[name].each do |o| %>
-          <li><%= o.user.full_name %></li>
-        <% end %>
-      </ul>
-    </p>
-    <br />
-  <% end %>
-<% end %>
+<div id='orders_list'>
+  <%= render :partial => 'orders', :object => @orders %>
+</div>

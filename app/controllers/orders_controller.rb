@@ -4,7 +4,8 @@ class OrdersController < ApplicationController
 
   def index
     @date = Date.current
-    @orders = Order.by_date(@date).ordered_by_lunch_name.group_by { |o| o.lunch.name }
+    @orders = Order.by_date(@date).ordered_by_vendor_name.group_by { |o| o.lunch.vendor.name }
+    @orders.each {|vendor,order_list| order_list.sort! {|x,y| x.lunch.name <=> y.lunch.name}}
   end
 
   def my
@@ -26,7 +27,8 @@ class OrdersController < ApplicationController
     @date = Date.civil(params[:year].to_i,
                        params[:month].to_i,
                        params[:day].to_i)
-    @orders = Order.by_date(@date).ordered_by_lunch_name.group_by { |o| o.lunch.name }
+    @orders = Order.by_date(@date).ordered_by_vendor_name.group_by { |o| o.lunch.vendor.name }
+    @orders.each {|vendor,order_list| order_list.sort! {|x,y| x.lunch.name <=> y.lunch.name}}
     respond_to do |format|
       format.html
       format.js

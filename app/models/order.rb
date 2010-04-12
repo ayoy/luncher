@@ -7,6 +7,7 @@ class Order < ActiveRecord::Base
 
   named_scope :by_date, lambda { |date| {:conditions => ["lunches.date = ?", date], :include => :lunch} }
   named_scope :by_user, lambda { |user| {:conditions => {:user_id => user.id} } }
+  named_scope :ordered_by_vendor_name, :order => "vendors.name ASC", :include => {:lunch => :vendor}
   named_scope :ordered_by_lunch_name, :order => "lunches.name ASC", :include => :lunch
   named_scope :refundable_lunches, :conditions => ["lunches.refundable = ?", true], :include => :lunch
   named_scope :refunded_lunches, :conditions => "lunches.price != total", :include => :lunch

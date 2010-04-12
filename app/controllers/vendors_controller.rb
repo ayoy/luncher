@@ -13,6 +13,13 @@ class VendorsController < ApplicationController
     @vendors = Vendor.all
   end
 
+  def notify_users
+    vendor = Vendor.find(params[:id])
+    Notifier.deliver_lunch_notification(vendor, vendor.users_for_date(Date.current))
+    flash[:notice] = "E-mail notification sent for #{vendor}"
+    redirect_to vendors_url
+  end
+
   def create
     vendor = Vendor.new(params[:vendor])
     flash[:notice] = "Vendor added!" if vendor.save

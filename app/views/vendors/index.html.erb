@@ -6,6 +6,8 @@
     <%= v.name %>
     <%= link_to "Edit", edit_vendor_path(v) %>
     <%= link_to "Remove", vendor_path(v), :method => :delete %>
+    - <%= pluralize v.orders_count_for_date(Date.current), "order" %> for today
+    - <%= link_to "Send e-mail notification", {:action => 'notify_users', :id => v.id} %>
   </li>
 <% end %>
 </ol>
