@@ -4,3 +4,4 @@ doc/api
 doc/app
 *.swp
 *~
+db/*.sqlite3
