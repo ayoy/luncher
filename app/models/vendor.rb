@@ -13,8 +13,8 @@ class Vendor < ActiveRecord::Base
     orders.by_date(date).size
   end
 
-  def users_for_date(date)
-    orders.by_date(date).map(&:user).uniq
+  def notifiable_users_for_date(date)
+    orders.by_date(date).map(&:user).uniq.select { |user| user.notifiable? }
   end
 
   def notification_sent_today?
