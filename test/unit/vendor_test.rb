@@ -7,9 +7,21 @@ class VendorTest < ActiveSupport::TestCase
   end
   
   test "should not create vendor with existing name" do
-    vendor = vendors(:one)
+    vendor = vendors(:PizzaHut)
     vendor.save
-    other_vendor = vendors(:one)
-    assert !other_vendor.save, "Saved vendor with already existing name"
+    vendor.id += 1
+    assert !vendor.save, "Saved vendor with already existing name"
   end
+
+  test "notification sent today" do
+    vendor = vendors(:PizzaHut)
+    vendor.notification_sent_on = Date.current
+    assert vendor.notification_sent_today?, "Notification was sent today"
+  end
+
+  test "notification wasnt sent today" do
+    vendor = vendors(:McDonald)
+    assert !vendor.notification_sent_today?, "Notification wasnt sent this day"
+  end
+
 end

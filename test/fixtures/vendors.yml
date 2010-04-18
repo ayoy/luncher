@@ -1,7 +1,7 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+PizzaHut:
+  name: PizzaHut
+  notification_sent_on: Date.current
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+McDonald:
+  name: McDonald
+  notification_sent_on: 2010-04-01

@@ -3,13 +3,10 @@ class Lunch < ActiveRecord::Base
   has_many :orders
   has_many :users, :through => :orders
 
-  validates_presence_of :date
   validates_presence_of :vendor_id
   validates_presence_of :name
   validates_presence_of :description
   validates_uniqueness_of :name, :scope => :date
-  validates_format_of :name, :with => /[A-Z]/,
-                      :message => "The name should be a single uppercase letter (A-Z)"
 
   named_scope :all_for_today, :conditions => {:date => Date.current}
   named_scope :by_date, lambda { |date| {:conditions => {:date => date}} }
@@ -35,4 +32,5 @@ class Lunch < ActiveRecord::Base
     return price - Setting.instance.money_refunded_per_lunch if refundable
     price
   end
+
 end
