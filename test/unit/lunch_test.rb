@@ -22,7 +22,7 @@ class LunchTest < ActiveSupport::TestCase
   end
   
   test "should save lunch without price" do
-    lunch = lunches(:without_price)    
+    lunch = lunches(:without_price)
     assert lunch.save, "Failed to save the lunch without a price"
   end
   
@@ -33,19 +33,6 @@ class LunchTest < ActiveSupport::TestCase
 
   test "should assign a default price for lunch without price" do
     lunch = lunches(:without_price)
-    assert_equal lunch.price, 5, "Default price is incorrect"
-  end
-
-  test "should increase the price when saving refundable lunch" do
-    lunch = lunches(:without_price)
-    lunch.save
-    assert_equal lunch.price, 10, "Non-refunded price is incorrect"
-  end
-
-  test "should not increase the price when saving non-refundable lunch" do
-    lunch = lunches(:without_price)
-    lunch.refundable = false
-    lunch.save
-    assert_equal lunch.price, 5, "Non-refunded price is incorrect"
+    assert_equal lunch.price, 10, "Default price is incorrect"
   end
 end

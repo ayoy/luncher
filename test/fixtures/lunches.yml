@@ -2,44 +2,44 @@
 
 one:
   date: 2010-04-03
-  vendor: MyString
-  name: MyString
+  vendor_id: 1
+  name: MyString1
   description: MyText
   price: 5
 
 two:
   date: 2010-04-03
-  vendor: MyString
-  name: MyString
+  vendor_id: 1
+  name: MyString2
   description: MyText
   price: 5
 
 without_date:
-  vendor: MyString
-  name: MyString
+  vendor_id: 1
+  name: MyString3
   description: MyText
   price: 5
   
 without_vendor:
   date: 2010-04-03
-  name: MyString
+  name: MyString4
   description: MyText
   price: 5
 
 without_name:
   date: 2010-04-03
-  vendor: MyString
+  vendor_id: 1
   description: MyText
   price: 5
 
 without_description:
   date: 2010-04-03
-  vendor: MyString
-  name: MyString
+  vendor_id: 1
+  name: MyString5
   price: 5
 
 without_price:
   date: 2010-04-03
-  vendor: MyString
-  name: MyString
+  vendor_id: 1
+  name: MyString6
   description: MyText
