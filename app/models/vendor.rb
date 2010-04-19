@@ -14,7 +14,7 @@ class Vendor < ActiveRecord::Base
   end
 
   def notifiable_users_for_date(date)
-    orders.by_date(date).map(&:user).uniq.select { |user| user.notifiable? }
+    orders.by_date(date).map(&:user).uniq.select { |user| user.email_notification_enabled? }
   end
 
   def notification_sent_today?
