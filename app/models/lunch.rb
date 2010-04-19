@@ -25,12 +25,14 @@ class Lunch < ActiveRecord::Base
   end
 
   def price_for_user(user)
-    return refunded_price if refundable && !user.ordered_refunded_lunch_for_date?(date)
+    return refunded_price if refundable &&
+                             Setting.instance.lunch_refunding &&
+                             user.refunded_lunches_for_date(date).size < Setting.instance.refunded_lunches_per_day
     price
   end
 
   def refunded_price
-    return price - 5 if refundable
+    return price - Setting.instance.money_refunded_per_lunch if refundable
     price
   end
 end

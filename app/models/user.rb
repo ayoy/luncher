@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
     [last_name, first_name].join(' ')
   end
   
-  def ordered_refunded_lunch_for_date?(date)
-    !orders.by_date(date).refundable_lunches.empty?
+  def refunded_lunches_for_date(date)
+    orders.by_date(date).refundable_lunches
   end
 
   def can_order_lunch?(lunch)
