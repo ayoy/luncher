@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  automatic_locking_enabled: false
+  automatic_locking_time: 2010-04-19 21:18:09
+  lunch_refunding: false
+  refunded_lunches_per_day: 1
+  money_refunded_per_lunch: 1.5
+
+two:
+  automatic_locking_enabled: false
+  automatic_locking_time: 2010-04-19 21:18:09
+  lunch_refunding: false
+  refunded_lunches_per_day: 1
+  money_refunded_per_lunch: 1.5

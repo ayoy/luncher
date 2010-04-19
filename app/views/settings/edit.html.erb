@@ -1,0 +1,29 @@
+<h2>Settings</h2>
+
+<% form_for @setting, :url => settings_path do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :automatic_locking_enabled, "Automatic system locking" %><br />
+    <%= f.check_box :automatic_locking_enabled %>
+  </p>
+  <p>
+    <%= f.label :automatic_locking_time, "Lock system daily at" %><br />
+    <%= f.time_select :automatic_locking_time %>
+  </p>
+  <p>
+    <%= f.label :lunch_refunding %><br />
+    <%= f.check_box :lunch_refunding %>
+  </p>
+  <p>
+    <%= f.label :refunded_lunches_per_day %><br />
+    <%= f.text_field :refunded_lunches_per_day %>
+  </p>
+  <p>
+    <%= f.label :money_refunded_per_lunch %><br />
+    <%= f.text_field :money_refunded_per_lunch %>
+  </p>
+  <p>
+    <%= f.submit 'Save settings' %>
+  </p>
+<% end %>

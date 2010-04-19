@@ -30,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :lunches
   map.resources :orders
   map.resources :password_resets
+  map.resource :settings
   map.resources :vendors
 
   map.root :controller => "user_sessions", :action => "new"
