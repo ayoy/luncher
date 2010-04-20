@@ -11,7 +11,8 @@ User.create \
 Lockdown::System.make_user_administrator(User.find(1))
 
 Setting.instance.update_attributes \
-          :automatic_locking_enabled => false,
+          :system_locked => false,
+          :automatic_locking => false,
           :automatic_locking_time => Time.parse("10:00"),
           :lunch_refunding => false,
           :refunded_lunches_per_day => 0,

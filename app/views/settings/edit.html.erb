@@ -4,8 +4,15 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :automatic_locking_enabled, "Automatic system locking" %><br />
-    <%= f.check_box :automatic_locking_enabled %>
+    <% if @setting.system_locked %>
+      System is locked. <%= link_to "Click to unlock", :action => :unlock_system %>
+    <% else %>
+      System is unlocked. <%= link_to "Click to lock", :action => :lock_system %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.label :automatic_locking, "Automatic system locking" %><br />
+    <%= f.check_box :automatic_locking %>
   </p>
   <p>
     <%= f.label :automatic_locking_time, "Lock system daily at" %><br />

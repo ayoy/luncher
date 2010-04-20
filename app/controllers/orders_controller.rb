@@ -38,6 +38,7 @@ class OrdersController < ApplicationController
   def new
     @date = Date.current
     @order = Order.new
+    flash[:notice] = "We're sorry, system is locked." if Setting.instance.system_locked
   end
 
   def create

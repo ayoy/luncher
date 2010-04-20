@@ -13,6 +13,9 @@
 <span style="float: right; text-align: right;"><%= link_to "Source code", "http://github.com/ayoy/luncher" %></span>
 <h1>Luncher</h1>
 <%= pluralize User.logged_in.count, "user" %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
+<% if current_user && Setting.instance.system_locked %>
+  <span style="color:red">System locked</span>
+<% end %>
 <br />
 <br />
 

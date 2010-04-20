@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <% if current_user.can_order_lunch?(lunch_to_order) %>
+    <% if !Setting.instance.system_locked && current_user.can_order_lunch?(lunch_to_order) %>
       <%= radio_button :order, :lunch_id, lunch_to_order.id %>
     <% else %>
       <%= radio_button :order, :lunch_id, lunch_to_order.id, :disabled => 'true' %>

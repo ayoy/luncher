@@ -19,6 +19,9 @@ ActionController::Routing::Routes.draw do |map|
               :month      => /\d{1,2}/,
               :day        => /\d{1,2}/
 
+  map.connect 'settings/lock_system', :controller => 'settings', :action => 'lock_system'
+  map.connect 'settings/unlock_system', :controller => 'settings', :action => 'unlock_system'
+
   map.connect 'vendors/:id/notify_users',
               :controller => 'vendors',
               :action => 'notify_users',
