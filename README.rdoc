@@ -7,25 +7,21 @@ This application is meant to help with ordering lunches in companies and workgro
 1. User registration (together with password recovery).
 2. Admin account to manage lunch options, user balances, and order lists.
 3. Refundable lunches (e.g. partially covered by company).
+4. One-click e-mail notification sending (triggered by admin when the lunches arrive).
 
 == What's still missing?
 
 1. Proper functional/integration tests.
 2. Automatic system locking at the time specified in configuration.
-3. One-click e-mail notification sending (triggered by admin when the lunches arrive).
-4. Configuration page:
-    * amount of mouney refunded by company per lunch,
-    * amount of refunded lunches per day,
-    * time of system locking/unlocking,
-     
-5. FUN!!! Rating lunches, comments, suggestions, etc. :)
-6. ...?
+3. See issues page for the rest...
+4. FUN!!! Rating lunches, comments, suggestions, etc. :)
+5. ...?
 
 == Requirements
 
-Authorization is based on AuthLogic (http://github.com/binarylogic/authlogic), and administrator privileges are implemented using Lockdown (http://stonean.com/page/lockdown). Two gems are required:
+Authorization is based on AuthLogic (http://github.com/binarylogic/authlogic), and administrator privileges are implemented using Lockdown (http://stonean.com/page/lockdown). Additionally, settings are implemented using acts_as_singleton. Three gems are required:
 
-  $ sudo gem install authlogic lockdown
+  $ sudo gem install authlogic lockdown acts_as_singleton
 
 
 == LICENSE
