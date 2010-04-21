@@ -4,7 +4,9 @@ class AutomaticSystemLockTask < Scheduler::SchedulerTask
   cron "#{Setting.instance.automatic_locking_time.strftime('%M %H')} * * *"
   
   def run
-    Setting.toggle_system_locked(true) if Setting.instance.automatic_locking
-    puts "System automatically locked"
+    if Setting.instance.automatic_locking
+      Setting.toggle_system_locked(true)
+      puts "System automatically locked"
+    end
   end
 end
