@@ -2,7 +2,7 @@
   <td align="center"><%= lunch_to_show.vendor %></td>
   <td align="center"><%= lunch_to_show.name %></td>
   <td><%= lunch_to_show.description %></td>
-  <td><%= lunch_to_show.refundable ? "yes" : "no" %></td>
+  <td><%= lunch_to_show.refundable && Setting.instance.lunch_refunding ? "yes" : "no" %></td>
   <td><%= to_currency lunch_to_show.refunded_price %></td>
   <td><%= link_to "Edit", edit_lunch_path(lunch_to_show) %></td>
   <td><%= link_to "Remove", lunch_path(lunch_to_show), :method => :delete %></td>

@@ -29,7 +29,7 @@ class Lunch < ActiveRecord::Base
   end
 
   def refunded_price
-    return price - Setting.instance.money_refunded_per_lunch if refundable
+    return price - Setting.instance.money_refunded_per_lunch if refundable && Setting.instance.lunch_refunding
     price
   end
 
