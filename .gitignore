@@ -1,4 +1,5 @@
 log/*.log
+log/*.output
 tmp/**/*
 doc/api
 doc/app

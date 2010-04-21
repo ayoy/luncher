@@ -29,6 +29,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'acts_as_singleton'
   config.gem 'authlogic'
+  config.gem 'chronic'
   config.gem 'lockdown', :lib => false
 
   # Only load the plugins named here, in the order given. By default, all plugins 
