@@ -14,7 +14,6 @@ class SettingsController < ApplicationController
     respond_to do |format|
       if @setting.update_attributes(params[:setting])
         flash[:notice] = 'Settings saved!'
-        # TODO: execute 'ruby scheduler/bin/scheduler_daemon.rb restart' here
         format.html { render :action => "edit" }
         format.xml  { head :ok }
       else

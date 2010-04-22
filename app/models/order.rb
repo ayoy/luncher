@@ -22,6 +22,12 @@ class Order < ActiveRecord::Base
     update_attribute(:total, total - Setting.instance.money_refunded_per_lunch)
   end
 
+  protected
+
+  def validate
+    errors.add_to_base("System is locked, can't process order") if Setting.instance.system_locked
+  end
+
   private
 
   def charge_user

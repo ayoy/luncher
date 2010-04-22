@@ -1,7 +1,7 @@
 class AutomaticSystemLockTask < Scheduler::SchedulerTask
   environments :all
   
-  cron "#{Setting.instance.automatic_locking_time.strftime('%M %H')} * * *"
+  cron Setting.automatic_locking_time_to_cron
   
   def run
     if Setting.instance.automatic_locking

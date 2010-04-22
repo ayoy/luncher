@@ -45,8 +45,13 @@ class OrdersController < ApplicationController
     order = Order.new(params[:order])
     order.user_id = current_user.id
     order.total = order.lunch.price_for_user(order.user)
-    flash[:notice] = "Lunch ordered!" if order.save
-    redirect_to :action => :my
+    if order.save
+      flash[:notice] = "Lunch ordered!"
+      redirect_to :action => :my
+    else
+      flash[:notice] = "We're sorry, system is locked."
+      redirect_to :action => :new
+    end
   end
 
   def destroy
