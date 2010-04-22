@@ -1,7 +1,0 @@
-PizzaHut:
-  name: PizzaHut
-  notification_sent_on: Date.current
-
-McDonald:
-  name: McDonald
-  notification_sent_on: 2010-04-01
