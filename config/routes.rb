@@ -11,7 +11,14 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'orders/today', :controller => 'orders', :action => 'today'
   map.connect 'orders/find_by_date', :controller => 'orders', :action => 'find_by_date'
   map.connect 'orders/find_all_by_date', :controller => 'orders', :action => 'find_all_by_date'
+  map.connect 'orders/find_by_month', :controller => 'orders', :action => 'find_by_month'
   map.connect 'orders/my', :controller => 'orders', :action => 'my'
+  map.connect 'orders/monthly_report', :controller => 'orders', :action => 'monthly_report'
+  map.connect 'orders/:year/:month',
+              :controller => 'orders',
+              :action     => 'find_by_month',
+              :year       => /\d{4}/,
+              :month      => /\d{1,2}/
   map.connect 'orders/:year/:month/:day',
               :controller => 'orders',
               :action     => 'find_all_by_date',

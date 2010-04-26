@@ -1,0 +1,10 @@
+<h2>Monthly Report</h2>
+
+<p><%= select_date @date, :start_year => 2010, :end_year => 2020, :discard_day => :true %></p>
+
+<div id='orders_list'>
+  <%= render :partial => 'orders_per_month', :object => @orders %>
+</div>
+
+<%= observe_field :date_year, :url => { :action => 'find_by_month' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue()" %>
+<%= observe_field :date_month, :url => { :action => 'find_by_month' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue()" %>
