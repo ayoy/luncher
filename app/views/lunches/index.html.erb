@@ -1,20 +1,20 @@
-<h2>Available lunch options</h2>
+<h2><%= t '.available_lunch_options' %></h2>
 
 <p><%= select_date @date, :start_year => 2010, :end_year => 2020 %></p>
 <%= observe_field :date_year, :url => { :action => 'show_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
 <%= observe_field :date_month, :url => { :action => 'show_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
 <%= observe_field :date_day, :url => { :action => 'show_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
 
-<p><%= link_to "Add lunch option", new_lunch_path %></p>
+<p><%= link_to t('.add_lunch_option_link'), new_lunch_path %></p>
 <p>
 <table>
   <thead>
     <tr>
-      <td><b>Vendor</b></td>
-      <td><b>ID</b></td>
-      <td><b>Description</b></td>
-      <td><b>Refunded?</b></td>
-      <td><b>Price*</b></td>
+      <td><b><%= Lunch.human_attribute_name(:vendor) %></b></td>
+      <td><b><%= t '.id' %></b></td>
+      <td><b><%= Lunch.human_attribute_name(:description) %></b></td>
+      <td><b><%= t '.refunded' %>?</b></td>
+      <td><b><%= Lunch.human_attribute_name(:price) %>*</b></td>
     </tr>
   </thead>
   <tbody id='lunches_list'>
@@ -22,7 +22,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan=5>* discounted price if applicable</td>
+      <td colspan=5>* <%= t '.discounted_price_if_applicable' %></td>
     </tr>
   </tfoot>
 </table>

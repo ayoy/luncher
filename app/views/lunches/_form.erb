@@ -1,7 +1,7 @@
 <%= form.label :date %><br />
 <%= form.date_select :date, :start_year => 2010, :end_year => 2020 %><br />
 <br />
-<%= form.label :vendor_id, "Vendor" %><br />
+<%= form.label :vendor_id %><br />
 <%= form.select :vendor_id, select_tag_for_name(lunch.vendor) %><br />
 <br />
 <%= form.label :name %><br />
@@ -13,5 +13,5 @@
 <%= form.label :refundable %>
 <%= form.check_box :refundable %><br />
 <br />
-<%= form.label :price, "Price (not discounted)", :id => 'price_label' %><br />
+<%= form.label :price, t('price_not_discounted'), :id => 'price_label' %><br />
 <%= form.text_field :price, :size => 5 %> zł<br />

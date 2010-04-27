@@ -1,6 +1,6 @@
 <h2>Lunch options for <%= @date %></h2>
 
-<%= link_to "Add lunch option", new_lunch_path %>
+<%= link_to t('.add_lunch_option_link'), new_lunch_path %>
 <% if !@lunches.empty? %>
   <p>
   <table>

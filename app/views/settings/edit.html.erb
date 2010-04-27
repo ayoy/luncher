@@ -1,21 +1,21 @@
-<h2>Settings</h2>
+<h2><%= t '.settings' %></h2>
 
 <% form_for @setting, :url => settings_path do |f| %>
   <%= f.error_messages %>
 
   <p>
     <% if @setting.system_locked %>
-      System is locked. <%= link_to "Click to unlock", :action => :unlock_system %>
+      <%= t('.system_locked') %> <%= link_to t('.click_to_unlock'), :action => :unlock_system %>
     <% else %>
-      System is unlocked. <%= link_to "Click to lock", :action => :lock_system %>
+      <%= t('.system_unlocked') %> <%= link_to t('.click_to_lock'), :action => :lock_system %>
     <% end %>
   </p>
   <p>
-    <%= f.label :automatic_locking, "Automatic system locking" %><br />
+    <%= f.label :automatic_locking, t('.automatic_system_locking') %><br />
     <%= f.check_box :automatic_locking %>
   </p>
   <p>
-    <%= f.label :automatic_locking_time, "Lock system daily at" %><br />
+    <%= f.label :automatic_locking_time, t('.lock_system_daily_at') %><br />
     <%= f.time_select :automatic_locking_time %>
   </p>
   <p>
@@ -31,6 +31,6 @@
     <%= f.text_field :money_refunded_per_lunch %>
   </p>
   <p>
-    <%= f.submit 'Save settings' %>
+    <%= f.submit t('.save_button') %>
   </p>
 <% end %>

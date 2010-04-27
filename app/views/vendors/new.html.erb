@@ -1,7 +1,7 @@
-<h2>Add lunch vendor</h2>
+<h2><%= t '.add_lunch_vendor' %></h2>
 
 <% form_for @vendor, :url => vendors_path do |f| %>
   <%= f.error_messages %>
   <%= render :partial => "form", :object => f %>
-  <%= f.submit "Add" %>
+  <%= f.submit t('.add_button') %>
 <% end %>

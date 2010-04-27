@@ -1,4 +1,4 @@
-<h2>Orders for <span id='date'><%= @date %></span></h2>
+<h2><%= t '.orders_for_span_date', :date => @date %></h2>
 
 <p><%= select_date @date, :start_year => 2010, :end_year => 2020 %></p>
 

@@ -1,4 +1,4 @@
-<h2>Orders for <%= @date %></h2>
+<h2><%= t '.orders_for_date', :date => @date %></h2>
 
 <div id='orders_list'>
   <%= render :partial => 'orders', :object => @orders %>

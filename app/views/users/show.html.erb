@@ -1,26 +1,26 @@
 <p>
-  <b>Login:</b>
+  <b><%= User.human_attribute_name(:login) %>:</b>
   <%=h @user.login %>
 </p>
 
 <p>
-  <b>First Name:</b>
+  <b><%= User.human_attribute_name(:first_name) %>:</b>
   <%=h @user.first_name %>
 </p>
 
 <p>
-  <b>Last Name:</b>
+  <b><%= User.human_attribute_name(:last_name) %>:</b>
   <%=h @user.last_name %>
 </p>
 
 <p>
-  <b>E-mail:</b>
+  <b><%= User.human_attribute_name(:email) %>:</b>
   <%=h @user.email %>
 </p>
 
 <p>
-  <b>Current Balance:</b>
+  <b><%= User.human_attribute_name(:balance) %>:</b>
   <%=h to_currency @user.balance %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to t('edit_link'), edit_user_path(@user) %>

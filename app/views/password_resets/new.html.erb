@@ -1,11 +1,11 @@
-<h2>Forgot Password</h2>
+<h2><%= t '.forgot_password' %></h2>
 
-Fill out the form below and instructions to reset your password will be emailed to you:<br />
+<%= t '.fill_the_form' %>:<br />
 <br />
 
 <% form_tag password_resets_path do %>
-  <label>Email:</label><br />
+  <label><%= t '.email' %>:</label><br />
   <%= text_field_tag "email" %><br />
   <br />
-  <%= submit_tag "Reset my password", :disable_with => "Wait a sec..." %>
+  <%= submit_tag t('.reset_password_button'), :disable_with => t('.wait_caption') %>
 <% end %>

@@ -6,6 +6,6 @@
     <%= to_currency order.total %>
   </td>
   <td>
-    <%= link_to "Remove", order_path(order), :method => :delete %>
+    <%= link_to t('remove_link'), order_path(order), :method => :delete %>
   </td>
 </tr>

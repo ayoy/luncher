@@ -10,32 +10,32 @@
 </head>
 <body>
 
-<span style="float: right; text-align: right;"><%= link_to "Source code", "http://github.com/ayoy/luncher" %></span>
+<span style="float: right; text-align: right;"><%= link_to t(:source_code_link), "http://github.com/ayoy/luncher" %></span>
 <h1>Luncher</h1>
-<%= pluralize User.logged_in.count, "user" %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
+<%= pluralize User.logged_in.count, t(:user) %> currently logged in<br /> <!-- This based on last_request_at, if they were active < 10 minutes they are logged in -->
 <% if current_user && Setting.instance.system_locked %>
-  <span style="color:red">System locked</span>
+  <span style="color:red"><%= t(:system_locked) %></span>
 <% end %>
 <br />
 <br />
 
 
 <% if current_user %>
-  <%= link_to "My Account", account_path %> |
-  <%= link_to "My Orders", :controller => 'orders', :action => 'my' %> |
+  <%= link_to t(:my_account_link), account_path %> |
+  <%= link_to t(:my_orders_link), :controller => 'orders', :action => 'my' %> |
   <% if current_user_is_admin? %>
-    <%= link_to "Lunches", lunches_path %> |
-    <%= link_to "Vendors", vendors_path %> |
-    <%= link_to "Order List", orders_path %> |
-    <%= link_to "Monthly Report", :controller => 'orders', :action => 'monthly_report' %> |
-    <%= link_to "Manage Users", users_path %> |
-    <%= link_to "Settings", edit_settings_path %> |
+    <%= link_to t(:lunches_link), lunches_path %> |
+    <%= link_to t(:vendors_link), vendors_path %> |
+    <%= link_to t(:order_list_link), orders_path %> |
+    <%= link_to t(:monthly_report_link), :controller => 'orders', :action => 'monthly_report' %> |
+    <%= link_to t(:manage_users_link), users_path %> |
+    <%= link_to t(:settings_link), edit_settings_path %> |
   <% end %>
-  <%= link_to "Logout", logout_path %>
+  <%= link_to t(:log_out_link), logout_path %>
 <% else %>
-  <%= link_to "Register", new_account_path %> |
-  <%= link_to "Log In", login_path %> |
-  <%= link_to "Forgot Password", new_password_reset_path %> |
+  <%= link_to t(:register_link), new_account_path %> |
+  <%= link_to t(:log_in_link), login_path %> |
+  <%= link_to t(:forgot_password_link), new_password_reset_path %> |
 <% end %>
 
 <p id='notice' style="color: green"><%= flash[:notice] %></p>

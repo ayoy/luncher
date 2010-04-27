@@ -1,0 +1,183 @@
+authlogic:
+  error_messages:
+    login_blank: can not be blank 
+    login_not_found: is not valid
+    login_invalid: should use only letters, numbers, spaces, and .-_@ please.
+    consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+    email_invalid: should look like an email address.
+    password_blank: can not be blank
+    password_invalid: is not valid
+    not_active: Your account is not active
+    not_confirmed: Your account is not confirmed
+    not_approved: Your account is not approved
+    no_authentication_details: You did not provide any details for authentication.
+  models:
+    user_session: UserSession
+  attributes:
+    user_session:
+      login: login
+      email: email
+      password: password
+      remember_me: remember me
+
+en:
+  source_code_link: Source code
+  user: user
+  system_locked: System Locked
+  my_account_link: My Account
+  my_orders_link: My Orders
+  lunches_link: Lunches
+  vendors_link: Vendors
+  order_list_link: Order List
+  monthly_report_link: Monthly Report
+  manage_users_link: Manage Users
+  settings_link: Settings
+  log_out_link: Log Out
+  register_link: Register
+  log_in_link: Log In
+  forgot_password_link: Forgot Password
+  must_be_logged_in: You must be logged in to access this page
+  price_not_discounted: Price (not discounted)
+  order_button: Order
+  add: Add
+  edit_link: Edit
+  remove_link: Remove
+  activerecord:
+    models:
+      lunch: Lunch
+      order: Order
+      setting: Setting
+      user: User
+      vendor: Vendor
+    attributes:
+      lunch:
+        date: Date
+        vendor_id: Vendor
+        name: Name
+        description: Description
+        refundable: Refundable
+        price: Price
+      order:
+        lunch_id: Lunch
+        user_id: User
+        total: Price
+      setting:
+        system_locked: System Locked
+        automatic_locking: Automatic system locking
+        automatic_locking_time: Lock system daily at
+        lunch_refunding: Lunch refunding
+        refunded_lunches_per_day: Refunded lunches per day
+        money_refunded_per_lunch: Money refunded per lunch
+      user:
+        login: Login
+        email: E-mail
+        first_name: First name
+        last_name: Last name
+        balance: Current balance
+        email_notifications_enabled: Email notifications enabled
+      vendor:
+        name: Name
+  lunches:
+    edit:
+      update: Update
+    find_by_date:
+      add_lunch_option_link: Add lunch option
+    index:
+      available_lunch_options: Available lunch options
+      add_lunch_option_link: Add lunch option
+      id: ID
+      refunded: Refunded
+      discounted_price_if_applicable: discounted price if applicable
+    new:
+      add_new_lunch: Add new lunch
+  notifier:
+    lunch_notification:
+      lunch_notification: Hey, lunches from {{name}} are here.
+    password_reset_instructions:
+      password_reset_instructions: |
+        Dear {{name}},
+        
+        A request to reset your password has been made.
+        If you did not make this request, simply ignore this email.
+        If you did make this request just click the link below:
+        
+        {{url}}
+        
+        If the above URL does not work try copying and pasting it into your browser.
+        If you continue to have problem please feel free to contact us.
+  orders:
+    orders:
+      total: Total
+    orders_per_month:
+      total: Total
+    find_all_by_date:
+      orders_for_date: Orders for {{date}}
+    index:
+      orders_for_span_date: Orders for <span id='date'>{{date}}</span>
+    monthly_report:
+      monthly_report: Monthly Report
+    my:
+      my_orders: My Orders
+      current_balance: Current balance
+      id: ID
+      place_order_link: Place Order
+    new:
+      order_lunch: Order lunch
+      current_balance: Current balance
+      id: ID
+      order_button: Order
+  password_resets:
+    edit:
+      change_my_password: Change My Password
+      update_button: Update my password and log me in
+    new:
+      forgot_password: Forgot Password
+      fill_the_form: Fill out the form below and instructions to reset your password will be emailed to you
+      email: E-mail
+      reset_password_button: Reset my password
+      wait_caption: Wait a sec...
+  settings:
+    edit:
+      settings: Settings
+      system_locked: System is locked
+      click_to_unlock: Click to unlock
+      system_unlocked: System is unlocked
+      click_to_lock: Click to lock
+      automatic_system_locking: Automatic system locking
+      lock_system_daily_at: Lock system daily at
+      save_button: Save settings
+  user_sessions:
+    new:
+      login: Login
+      login_button: Login
+  users:
+    form:
+      change_password: Change password
+      notify_by_email: Notify by email?
+    edit:
+      edit_my_account: Edit My Account
+      edit_users_account: Edit {{name}} Account
+      update_button: Update
+      my_profile_link: My Profile
+    index:
+      user_list: User list
+      name: Name
+      update_button: Update
+      edit_account_link: Edit Account
+    new:
+      register: Register
+      register_button: Register
+  vendors:
+    edit:
+      edit_lunch_vendor: Edit lunch vendor
+      update_button: Update
+    index:
+      lunch_vendors: Lunch vendors
+      for_today: for today
+      notification_already_sent: Notification already sent today
+      click_to_resend: click to resend
+      send_email_notification: Send e-mail notification
+      add_vendor_link: Add vendor
+    new:
+      add_lunch_vendor: Add lunch vendor
+      add_button: Add

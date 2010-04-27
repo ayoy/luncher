@@ -1,7 +1,7 @@
 <%= form.label :login %><br />
 <%= form.text_field :login, :readonly => (not form.object.new_record?) %><br />
 <br />
-<%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
+<%= form.label :password, form.object.new_record? ? nil : t('.change_password') %><br />
 <%= form.password_field :password %><br />
 <br />
 <%= form.label :password_confirmation %><br />
@@ -17,6 +17,6 @@
 <%= form.text_field :email %><br />
 <br />
 <p>
-  <%= form.label :email_notification_enabled, "Notify by email?" %>
+  <%= form.label :email_notification_enabled, t('.notify_by_email') %>
   <%= form.check_box :email_notification_enabled %>
 </p>

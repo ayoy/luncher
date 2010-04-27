@@ -3,5 +3,5 @@
 <% form_for @lunch, :url => { :action => "update" } do |f| %>
   <%= f.error_messages %>
   <%= render :partial => "form", :locals => {:form => f, :lunch => @lunch} %>
-  <%= f.submit "Update" %>
+  <%= f.submit t('.update') %>
 <% end %>
