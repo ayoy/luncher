@@ -4,19 +4,6 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
   before_filter :fetch_user, :only => [:show, :edit, :update]
 
-  def fetch_user
-    if params[:id]
-      if current_user_is_admin? || params[:id].to_i == current_user.id
-        @user = User.find(params[:id])
-      else
-        flash[:notice] = "You don't have priviledges to access this page"
-        redirect_to account_url
-      end
-    else
-      @user = current_user # makes our views "cleaner" and more consistent
-    end
-  end
-
   def index
     @users = User.all
   end
@@ -61,6 +48,20 @@ class UsersController < ApplicationController
       flash[:notice] = "User #{user.login} deleted!"
     end
     redirect_to root_path
+  end
+
+  private
+  def fetch_user
+    if params[:id]
+      if current_user_is_admin? || params[:id].to_i == current_user.id
+        @user = User.find(params[:id])
+      else
+        flash[:notice] = "You don't have priviledges to access this page"
+        redirect_to account_url
+      end
+    else
+      @user = current_user # makes our views "cleaner" and more consistent
+    end
   end
 
 end
