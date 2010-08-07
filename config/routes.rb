@@ -33,6 +33,14 @@ ActionController::Routing::Routes.draw do |map|
               :controller => 'vendors',
               :action => 'notify_users',
               :id => /\d+/
+  map.connect 'vendors/:id/mark_orders_complete',
+              :controller => 'vendors',
+              :action => 'mark_orders_complete',
+              :id => /\d+/
+  map.connect 'vendors/:id/mark_orders_new',
+              :controller => 'vendors',
+              :action => 'mark_orders_new',
+              :id => /\d+/
 
   map.resource :account, :controller => "users"
   map.resource :user_session

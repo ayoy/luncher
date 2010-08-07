@@ -4,7 +4,8 @@
     <p><%= vendor %> - <%= pluralize orders[vendor].size, "order" %>:
       <ul>
         <% orders[vendor].each do |o| %>
-          <li><%= o.lunch.name %> - <%= o.user.full_name %></li>
+          <li><%= o.lunch.name %> - <%= o.user.full_name %> - <%= o.status %>
+              <%= link_to t('.cancel_order'), o, :method => :delete %></li>
         <% end %>
       </ul>
     </p>

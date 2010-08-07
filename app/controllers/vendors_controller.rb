@@ -10,7 +10,7 @@ class VendorsController < ApplicationController
   end
 
   def index
-    @vendors = Vendor.all
+    @vendors = Vendor.all_available
   end
 
   def notify_users
@@ -18,6 +18,24 @@ class VendorsController < ApplicationController
     Notifier.deliver_lunch_notification(vendor, vendor.notifiable_users_for_date(Date.current))
     flash[:notice] = "E-mail notification sent for #{vendor}"
     vendor.update_attribute(:notification_sent_on, Date.current)
+    redirect_to vendors_url
+  end
+  
+  def mark_orders_complete
+    vendor = Vendor.find(params[:id])
+    vendor.orders.each do |order|
+      order.mark_as_complete
+    end
+    flash[:notice] = "Orders from #{vendor} marked as complete"
+    redirect_to vendors_url
+  end
+  
+  def mark_orders_new
+    vendor = Vendor.find(params[:id])
+    vendor.orders.each do |order|
+      order.mark_as_new
+    end
+    flash[:notice] = "Orders from #{vendor} marked as new"
     redirect_to vendors_url
   end
 
@@ -35,7 +53,11 @@ class VendorsController < ApplicationController
 
   def destroy
     vendor = Vendor.find(params[:id])
-    flash[:notice] = "Vendor removed!" if vendor.destroy
+    if vendor.removable?
+      flash[:notice] = "Vendor removed!" if vendor.destroy
+    else
+      flash[:notice] = "Vendor removed!" if vendor.update_attribute(:available, false)
+    end
     redirect_to vendors_url 
   end
 end

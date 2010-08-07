@@ -21,6 +21,8 @@ authlogic:
       remember_me: remember me
 
 en:
+  yes: yes
+  no: no
   source_code_link: Source code
   user: user
   system_locked: System Locked
@@ -106,8 +108,13 @@ en:
         If the above URL does not work try copying and pasting it into your browser.
         If you continue to have problem please feel free to contact us.
   orders:
+    order:
+      new: new
+      complete: complete
+      cancel_order: Cancel order
     orders:
       total: Total
+      cancel_order: Cancel order
     orders_per_month:
       total: Total
     find_all_by_date:
@@ -120,6 +127,7 @@ en:
       my_orders: My Orders
       current_balance: Current balance
       id: ID
+      status: Status
       place_order_link: Place Order
     new:
       order_lunch: Order lunch
@@ -174,10 +182,13 @@ en:
     index:
       lunch_vendors: Lunch vendors
       for_today: for today
+      sure_to_remove_vendor: Are you sure to remove this vendor? All the lunches from this vendor will be removed as well.
       notification_already_sent: Notification already sent today
       click_to_resend: click to resend
       send_email_notification: Send e-mail notification
       add_vendor_link: Add vendor
+      mark_orders_as_complete: Mark orders as complete
+      mark_orders_as_new: Mark orders as new
     new:
       add_lunch_vendor: Add lunch vendor
       add_button: Add

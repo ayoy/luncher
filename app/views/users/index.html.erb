@@ -6,7 +6,7 @@
     <tr>
       <td align='center'><b><%= t '.name' %></b></td>
       <td><b><%= User.human_attribute_name(:login) %></b></td>
-      <td colspan=3 align='center'><b><%= User.human_attribute_name(:login) %></b></td>
+      <td colspan=2 align='center'><b><%= User.human_attribute_name(:balance) %></b></td>
     </tr>
     <% User.ordered_by_last_name.each do |u| %>
       <tr>

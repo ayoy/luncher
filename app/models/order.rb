@@ -13,14 +13,29 @@ class Order < ActiveRecord::Base
   named_scope :refundable_lunches, :conditions => ["lunches.refundable = ?", true], :include => :lunch
   named_scope :refunded_lunches, :conditions => "lunches.price != total", :include => :lunch
   named_scope :not_refunded_lunches, :conditions => "lunches.price == total", :include => :lunch
+  named_scope :incomplete, :conditions => {:complete => false}
   
-  before_save :charge_user
+  before_create :charge_user
   before_destroy :return_money
   after_destroy :refund_other
+  after_destroy :release_lunch
 
   def refund
     return_money
     update_attribute(:total, total - Setting.instance.money_refunded_per_lunch)
+  end
+
+  def status
+    return "new order" unless complete
+    "order complete"
+  end
+  
+  def mark_as_complete
+    update_attribute(:complete, true)
+  end
+
+  def mark_as_new
+    update_attribute(:complete, false)
   end
 
   protected
@@ -38,12 +53,18 @@ class Order < ActiveRecord::Base
   def return_money
     user.return_money_for_order(self) unless user.nil?
   end
-
+  
   def refund_other
     refundable_lunches = user.orders.by_date(lunch.date).refundable_lunches
     if refundable_lunches.refunded_lunches.empty?
       other_order = refundable_lunches.not_refunded_lunches.find(:first)
       other_order.refund unless other_order.nil?
+    end
+  end
+
+  def release_lunch
+    if lunch.orders.empty? and !lunch.available
+      lunch.destroy
     end
   end
 end

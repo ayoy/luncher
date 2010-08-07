@@ -5,8 +5,13 @@
   <li>
     <%= v.name %>
     <%= link_to t('edit_link'), edit_vendor_path(v) %>
-    <%= link_to t('remove_link'), vendor_path(v), :method => :delete %>
+    <%= link_to t('remove_link'), vendor_path(v), :method => :delete, :confirm => t('.sure_to_remove_vendor') %>
     - <%= pluralize v.orders_count_for_date(Date.current), "order" %> <%= t '.for_today' %>
+    <% if v.has_incomplete_orders_for_date?(Date.current) %>
+    - <%= link_to t('.mark_orders_as_complete'), {:action => 'mark_orders_complete', :id => v.id} %>
+    <% elsif !v.orders_count_for_date(Date.current).zero? %>
+    - <%= link_to t('.mark_orders_as_new'), {:action => 'mark_orders_new', :id => v.id} %>
+    <% end %>
     <% if v.notification_sent_today? %>
     - <%= t '.notification_already_sent' %>, <%= link_to t('.click_to_resend'), {:action => 'notify_users', :id => v.id}, :confirm => "Are you sure you want to send another e-mail notification to users?" %>
     <% else %>

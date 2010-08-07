@@ -73,7 +73,11 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.destroy
     flash[:notice] = "Order removed!"
-    redirect_to :action => :my
+    if current_user_is_admin?
+      redirect_to :action => :index
+    else
+      redirect_to :action => :my
+    end
   end
 
 end
