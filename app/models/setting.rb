@@ -13,6 +13,6 @@ class Setting < ActiveRecord::Base
   private
   def restart_scheduler
     # TODO: make it working
-    puts "Restarted scheduler daemon"
+    # puts "Restarted scheduler daemon"
   end
 end

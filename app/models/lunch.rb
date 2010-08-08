@@ -34,13 +34,13 @@ class Lunch < ActiveRecord::Base
     return price - Setting.instance.money_refunded_per_lunch if refundable && Setting.instance.lunch_refunding
     price
   end
-  
+
   def has_pending_orders?
-    !orders.find(:first, :conditions => {:complete => false}, :select => :id).nil?
+    !orders.first(:conditions => {:complete => false}, :select => :id).nil?
   end
 
   def removable?
-    orders.find(:first, :conditions => {:complete => true}, :select => 'id').nil?
+    orders.first(:conditions => {:complete => true}, :select => :id).nil?
   end
   
   def release_vendor

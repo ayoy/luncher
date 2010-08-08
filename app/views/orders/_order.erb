@@ -13,8 +13,10 @@
     <td>
       <%= t('.new') %>
     </td>
-    <td>
-      <%= link_to t('.cancel_order'), order_path(order), :method => :delete %>
-    </td>
+    <% unless Setting.instance.system_locked %>
+      <td>
+        <%= link_to t('.cancel_order'), order_path(order), :method => :delete %>
+      </td>
+    <% end %>
   <% end %>
 </tr>

@@ -23,6 +23,7 @@ class Order < ActiveRecord::Base
   def refund
     return_money
     update_attribute(:total, total - Setting.instance.money_refunded_per_lunch)
+    charge_user
   end
 
   def status

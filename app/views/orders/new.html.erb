@@ -35,3 +35,19 @@
 <%= observe_field :date_year, :url => { :controller => 'lunches', :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
 <%= observe_field :date_month, :url => { :controller => 'lunches', :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
 <%= observe_field :date_day, :url => { :controller => 'lunches', :action => 'find_by_date' }, :with => "'year=' + $('date_year').getValue() + '&month=' + $('date_month').getValue() + '&day=' + $('date_day').getValue()" %>
+
+<script type="text/javascript">
+  function setupOrderButton()
+  {
+    var disableButton = new Boolean(true);
+    for (var i=1; $('order_lunch_id_'+i); i++)
+    {
+      if ($('order_lunch_id_'+i).disabled == false)
+      {
+        disableButton=false;
+        break;
+      }
+    }
+    $('order_submit').disabled=disableButton;
+  }
+</script>
