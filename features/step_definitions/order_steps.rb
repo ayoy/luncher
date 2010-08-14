@@ -2,22 +2,6 @@
 ### helpers
 ###
 
-def user(username)
-  if User.first(:conditions => {:login => username}, :select => :id).nil?
-    user ||= Factory :user, :login => username
-  end
-end
-
-def login(username)
-  user username
-  visit login_path
-  fill_in "Login", :with => username
-  fill_in "Password", :with => "password"
-  click_button "Login"
-  response.should contain("Login successful!")
-  response.should contain("Log Out")
-end
-
 def orders_by_user_and_date(user, date)
   Order.by_user(User.first(:conditions => {:login => user})).by_date(date)
 end
@@ -30,20 +14,8 @@ end
 ### steps
 ###
 
-Given /^there is a user called "([^"]*)"$/ do |username|
-  user username
-end
-
-Given /^there is a vendor called "(.+)"$/ do |name|
-  Vendor.create!(:name => name)
-end
-
 Given /^user "([^"]*)" has the balance equal to (\d+)$/ do |username, balance|
   User.first(:conditions => {:login => username}).update_attribute(:balance, balance)
-end
-
-Given /^I log in as user "(.+)"$/ do |username|
-  login username
 end
 
 Given /^system is (locked|unlocked)$/ do |state|
@@ -59,24 +31,8 @@ Given /^the following orders:$/ do |orders|
   Order.create!(orders.hashes)
 end
 
-Given /^the following lunches:$/ do |lunches|
-  lunches.hashes.each do |hash|
-    hash[:date] = Date.current
-  end
-  Lunch.create!(lunches.hashes)
-end
-
 Given /^I have (\d+) orders for the current date$/ do |count|
   orders_by_user_and_date("john", Date.current).count.should == count.to_i
-end
-
-Given /^there are lunches named (.+) from "(.+)"$/ do |names, vendor|
-  names.split(', ').each do |name|
-    Lunch.create!(:name => name,
-                  :date => Date.current,
-                  :description => name,
-                  :vendor_id => Vendor.first(:conditions => {:name => vendor}).id)
-  end
 end
 
 Given /^lunches are refundable by (\d+)$/ do |amount|
@@ -93,6 +49,10 @@ end
 
 Then /^I should have (\d+) orders? for the current date$/ do |count|
   orders_by_user_and_date("john", Date.current).count.should == count.to_i
+end
+
+Then /^I should have (\d+) orders?$/ do |count|
+  Order.count.should == count.to_i
 end
 
 Then /^it should be named "([^"]*)"$/ do |name|

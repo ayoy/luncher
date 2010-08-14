@@ -1,6 +1,6 @@
 class Lunch < ActiveRecord::Base
   belongs_to :vendor
-  has_many :orders
+  has_many :orders, :dependent => :destroy
   has_many :users, :through => :orders, :dependent => :destroy
 
   validates_presence_of :vendor_id
@@ -13,6 +13,7 @@ class Lunch < ActiveRecord::Base
   named_scope :ordered_by_date, :order => "date ASC"
   named_scope :ordered_by_name, :order => "name ASC"
   
+  after_save :figure_out_availability_based_on_date
   after_destroy :release_vendor
 
   def self.first_available_name_for_date(date)
@@ -36,13 +37,21 @@ class Lunch < ActiveRecord::Base
   end
 
   def has_pending_orders?
-    !orders.first(:conditions => {:complete => false}, :select => :id).nil?
+    orders.any? {|order| order.complete == false}
   end
 
   def removable?
-    orders.first(:conditions => {:complete => true}, :select => :id).nil?
+    orders.empty? or orders.all? {|order| order.complete == false}
   end
   
+  private
+
+  def figure_out_availability_based_on_date
+    if !self.date.nil? and self.date < Date.current and self.available
+      self.update_attribute(:available, false)
+    end
+  end
+
   def release_vendor
     if vendor.lunches.empty? and !vendor.available
       vendor.destroy

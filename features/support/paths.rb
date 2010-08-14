@@ -10,8 +10,6 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /the new order page/
-      new_order_path
 
     when /my orders page/
       '/orders/my'
@@ -19,11 +17,8 @@ module NavigationHelpers
     when /the new order page/
       new_order_path
 
-    when /the new manage_orders page/
-      new_manage_orders_path
-
-    when /the new manage_orders page/
-      new_manage_orders_path
+    when /the vendors page/
+      vendors_path
 
 
     # Add more mappings here.

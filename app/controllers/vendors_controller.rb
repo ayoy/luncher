@@ -56,7 +56,7 @@ class VendorsController < ApplicationController
     if vendor.removable?
       flash[:notice] = "Vendor removed!" if vendor.destroy
     else
-      flash[:notice] = "Vendor removed!" if vendor.update_attribute(:available, false)
+      flash[:notice] = "Vendor removed!" if vendor.hide
     end
     redirect_to vendors_url 
   end

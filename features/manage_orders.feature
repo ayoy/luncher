@@ -5,7 +5,7 @@ Feature: Manage orders
 
   Background:
     Given there is a vendor called "MyVendor"
-    And the following lunches:
+    And the following lunches for now:
       | vendor_id | name | description |
       | 1         | A    | Pizza       |
       | 1         | B    | Chicken     |
@@ -95,10 +95,10 @@ Feature: Manage orders
     And I should see "Current balance: 45.00"
     When I delete the 6th order
     And I delete the 5th order
-    And I delete the 1th order
-    And I delete the 3th order
-    And I delete the 2th order
-    And I delete the 1th order
+    And I delete the 1st order
+    And I delete the 3rd order
+    And I delete the 2nd order
+    And I delete the 1st order
     Then I should have 0 orders for the current date
     And I should see "Current balance: 100.00"
     And I should see "Order removed!"

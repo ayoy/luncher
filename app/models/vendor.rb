@@ -28,6 +28,14 @@ class Vendor < ActiveRecord::Base
   end
 
   def removable?
-    lunches.find(:first, :select => 'id').nil?
+    lunches.all?(&:removable?)
   end
+  
+  def hide
+    lunches.each do |lunch|
+      lunch.destroy if lunch.removable?
+    end
+    update_attribute(:available, false)
+  end
+  
 end

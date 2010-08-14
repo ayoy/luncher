@@ -62,10 +62,10 @@ class LunchesController < ApplicationController
 
   def destroy
     lunch = Lunch.find(params[:id])
-    if lunch.has_pending_orders?
-      flash[:notice] = "There are pending orders for this lunch, it can't be removed"
-    elsif lunch.removable?
+    if lunch.removable?
       flash[:notice] = "Lunch removed!" if lunch.destroy
+    elsif lunch.has_pending_orders?
+      flash[:notice] = "There are pending orders for this lunch, it can't be removed"
     else
       flash[:notice] = "Lunch removed!" if lunch.update_attribute(:available, false)
     end
