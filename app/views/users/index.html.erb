@@ -3,12 +3,15 @@
 <% unless @users.empty? %>
   <p>
   <table>
+    <thead>
     <tr>
       <td align='center'><b><%= t '.name' %></b></td>
       <td><b><%= User.human_attribute_name(:login) %></b></td>
       <td colspan=2 align='center'><b><%= User.human_attribute_name(:balance) %></b></td>
     </tr>
-    <% User.ordered_by_last_name.each do |u| %>
+    <thead>
+    <tbody>
+    <% @users.each do |u| %>
       <tr>
         <td><%= u.full_name %></td>
         <td><%= link_to "#{u.login}", user_path(u) %></td>
@@ -20,8 +23,10 @@
           <% end %>
         </td>
         <td><%= link_to t('.edit_account_link'), edit_user_path(u) %></td>
+        <td><%= link_to t('.remove_account_link'), user_path(u), :method => :delete, :confirm => t('.sure_to_remove_account', :name => u.full_name) %></td>
       </tr>
     <% end %>
+    </tbody>
   </table>
   </p>
 <% end %>

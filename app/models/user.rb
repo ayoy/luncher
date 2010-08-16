@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   
   named_scope :ordered_by_login, :order => "login ASC"
   named_scope :ordered_by_last_name,
-              :order => "last_name ASC",
-              :conditions => "login != 'root'"
+              :order => "last_name ASC"
+              #,:conditions => "login != 'root'"
   
   def deliver_password_reset_instructions!
     reset_perishable_token!

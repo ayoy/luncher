@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_filter :fetch_user, :only => [:show, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.ordered_by_last_name
   end
 
   def new
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
       user.destroy
       flash[:notice] = "User #{user.login} deleted!"
     end
-    redirect_to root_path
+    redirect_to users_path
   end
 
   private

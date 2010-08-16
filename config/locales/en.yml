@@ -32,7 +32,7 @@ en:
   vendors_link: Vendors
   order_list_link: Order List
   monthly_report_link: Monthly Report
-  manage_users_link: Manage Users
+  users_link: Users
   settings_link: Settings
   log_out_link: Log Out
   register_link: Register
@@ -172,6 +172,8 @@ en:
       name: Name
       update_button: Update
       edit_account_link: Edit Account
+      remove_account_link: Remove Account
+      sure_to_remove_account: Are you sure to remove account for {{name}}?
     new:
       register: Register
       register_button: Register
