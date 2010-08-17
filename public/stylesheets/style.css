@@ -167,11 +167,12 @@ a:hover {
 
 #menu a {
 	display: block;
-	width: 100px;
+	width: 104px;
 	height: 33px;
 	padding-top: 16px;
 	text-decoration: none;
 	text-align: center;
+	vertical-align: bottom;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	font-weight: bold;
@@ -211,6 +212,54 @@ a:hover {
 	float: left;
 	width: 620px;
 	padding: 30px 0px 0px 0px;
+}
+
+
+#content table {
+  border-spacing: 0px;
+	margin: 30px 0px 30px 0px;
+	padding: 0;
+	list-style: none;
+}
+
+#content td {
+	margin: 0px 30px;
+	padding: 5px 10px 5px 10px;
+	border-left: none;
+}
+
+#content thead tr {
+  text-align: center;
+	border-bottom: 1px solid #D1D1D1;
+}
+#content thead td {
+  text-align: center;
+	border-bottom: 1px solid #D1D1D1;
+}
+
+#content tbody tr:hover {
+  background-color: #659CEF;
+  color: white;
+}
+
+#content tbody tr:hover a {
+  background-color: #659CEF;
+  color: yellow;
+}
+
+#content tbody td {
+	border-bottom: 1px dashed #D1D1D1;
+}
+
+#content tfoot td {
+	margin: 0;
+	padding: 0;
+}
+
+#radio {
+	margin: 0;
+	padding: 0;
+	text-align: center;
 }
 
 .post {
