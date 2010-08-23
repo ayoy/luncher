@@ -13,7 +13,12 @@ class User < ActiveRecord::Base
   named_scope :ordered_by_login, :order => "login ASC"
   named_scope :ordered_by_last_name,
               :order => "last_name ASC"
-              #,:conditions => "login != 'root'"
+
+  def editor_ids
+    ug = UserGroup.find_by_name('Usersadmin')
+    # Return the user_ids associated to the user group plus this user's id
+    ug.user_ids | [self.id]
+  end
   
   def deliver_password_reset_instructions!
     reset_perishable_token!

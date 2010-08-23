@@ -51,6 +51,8 @@ Lockdown::System.configure do
   #       *Notice: Do not add leading or trailing slashes,
   #                Lockdown will handle this
   #
+  options[:session_timeout_method] = :clear_authlogic_session
+
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Define permissions
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,12 +117,28 @@ Lockdown::System.configure do
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Protected Access
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  set_permission(:my_account).
-    with_controller(:users).
-    only_methods(:show, :edit, :update, :index).
-    and_controller(:orders).
-    and_controller(:lunches).
-    and_controller(:vendors)
+  # set_permission(:my_account).
+  #   with_controller(:users).
+  #   only_methods(:show, :edit, :update, :index).
+  #   and_controller(:orders).
+  #   and_controller(:lunches).
+  #   and_controller(:vendors)
+
+  set_permission(:show_account).with_controller(:users).
+    only_methods(:show)
+
+  set_permission(:user_owner).with_controller(:users).
+    only_methods(:edit, :update).
+    to_model(:user).where(:editor_ids).includes(:current_user_id)
+    
+  set_permission(:order_lunch).with_controller(:orders).
+    except_methods(:index, :monthly_report, :find_all_by_date)
+    
+  set_permission(:user_admin).with_controller(:users).
+     and_controller(:orders).
+     and_controller(:lunches).
+     and_controller(:vendors).
+     and_controller(:settings)
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Built-in user groups
@@ -129,12 +147,14 @@ Lockdown::System.configure do
   #  by using the following:
   # 
   #  To allow public access on the permissions :sessions and :home:
-      set_public_access :login, :register_account
+  #   set_public_access :login, :register_account
   #     
   #  Restrict :my_account access to only authenticated users:
-      set_protected_access :my_account
+  #  set_protected_access :my_account
   #
   # Define the built-in user groups here:
+  set_public_access :login, :register_account
+  set_protected_access :show_account, :user_owner, :order_lunch
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Define user groups
@@ -148,6 +168,6 @@ Lockdown::System.configure do
   #
   # 
   # Define your user groups here:
-
+  set_user_group(:usersadmin, :user_admin)
 
 end 

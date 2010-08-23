@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_admin, :only => [:index]
-  before_filter :require_user, :only => [:show, :edit, :update]
   before_filter :fetch_user, :only => [:show, :edit, :update]
 
   def index
@@ -24,6 +22,12 @@ class UsersController < ApplicationController
   end
   
   def show
+    # redirect to /account if non-admin user tries to access others
+    # Can't do this with lockdown as /account doesn't provide :id
+    unless current_user_is_admin? or @user.id == current_user_id
+      redirect_to account_url
+    end
+    store_location
   end
 
   def edit
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       respond_to do |format|
-        format.html { redirect_to account_url }
+        format.html { redirect_back_or_default account_url }
         format.js
       end
     else
@@ -53,12 +57,7 @@ class UsersController < ApplicationController
   private
   def fetch_user
     if params[:id]
-      if current_user_is_admin? || params[:id].to_i == current_user.id
         @user = User.find(params[:id])
-      else
-        flash[:notice] = "You don't have priviledges to access this page"
-        redirect_to account_url
-      end
     else
       @user = current_user # makes our views "cleaner" and more consistent
     end

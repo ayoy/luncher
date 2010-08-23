@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-  before_filter :require_admin, :only => [:find_all_by_date, :find_by_month, :index]
-  before_filter :require_user, :except => [:find_all_by_date, :find_by_month, :index]
 
   def index
     @date = Date.current

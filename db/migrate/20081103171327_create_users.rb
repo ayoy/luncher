@@ -21,14 +21,6 @@ class CreateUsers < ActiveRecord::Migration
     
     add_index :users, :login
     add_index :users, :perishable_token
-
-    usr = User.create \
-              :login => 'root',
-              :email => 'lunch_admin@ayoy.net',
-              :first_name => 'root',
-              :last_name => 'root',
-              :password => 'rootme',
-              :password_confirmation => 'rootme'
   end
 
   def self.down

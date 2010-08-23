@@ -1,5 +1,4 @@
 class VendorsController < ApplicationController
-  before_filter :require_admin
 
   def new
     @vendor = Vendor.new

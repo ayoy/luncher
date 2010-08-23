@@ -20,3 +20,8 @@
   <%= form.label :email_notification_enabled, t('.notify_by_email') %>
   <%= form.check_box :email_notification_enabled %>
 </p>
+<% if current_user_is_admin? %>
+  <%= form.label :user_groups %><br />
+  <%= form.collection_select :user_group_ids, UserGroup.all(:conditions => ['name != ?', 'Administrators']), :id, :name, {}, {:multiple => true} %><br />
+  <br />
+<% end %>

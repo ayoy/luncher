@@ -1,4 +1,4 @@
-User.create \
+root_user = User.create \
           :login => 'root',
           :email => 'lunch_admin@ayoy.net',
           :first_name => 'root',
@@ -8,7 +8,10 @@ User.create \
 
 # This will create the 'Administrator' user group and 
 # associate it to the user.
-Lockdown::System.make_user_administrator(User.find(1))
+Lockdown::System.make_user_administrator(User.find(root_user.id)) unless root_user.id.nil?
+
+UserGroup.create :name => 'Usersadmin'
+UserGroup.create :name => 'Users'
 
 Setting.instance.update_attributes \
           :system_locked => false,

@@ -28,14 +28,12 @@
   <% if current_user %>
     <li><%= link_to t(:my_account_link), account_path %></li>
     <li><%= link_to t(:my_orders_link), :controller => 'orders', :action => 'my' %></li>
-    <% if current_user_is_admin? %>
-      <li><%= link_to t(:lunches_link), lunches_path %></li>
-      <li><%= link_to t(:vendors_link), vendors_path %></li>
-      <li><%= link_to t(:order_list_link), orders_path %></li>
-      <li><%= link_to t(:monthly_report_link), :controller => 'orders', :action => 'monthly_report' %></li>
-      <li><%= link_to t(:users_link), users_path %></li>
-      <li><%= link_to t(:settings_link), edit_settings_path %></li>
-    <% end %>
+    <li><%= link_to t(:lunches_link), lunches_path %></li>
+    <li><%= link_to t(:vendors_link), vendors_path %></li>
+    <li><%= link_to t(:order_list_link), orders_path %></li>
+    <li><%= link_to t(:monthly_report_link), :controller => 'orders', :action => 'monthly_report' %></li>
+    <li><%= link_to t(:users_link), users_path %></li>
+    <li><%= link_to t(:settings_link), edit_settings_path %></li>
     <li><%= link_to t(:log_out_link), logout_path %></li>
   <% else %>
     <li><%= link_to t(:register_link), new_account_path %></li>

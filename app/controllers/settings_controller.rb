@@ -1,5 +1,4 @@
 class SettingsController < ApplicationController
-  before_filter :require_admin
 
   # GET /settings/1/edit
   def edit

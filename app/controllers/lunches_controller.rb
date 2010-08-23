@@ -1,6 +1,4 @@
 class LunchesController < ApplicationController
-  before_filter :require_admin, :except => :find_by_date
-  before_filter :require_user, :only => :find_by_date
 
   def index
     @date = Date.current

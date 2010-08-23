@@ -3,6 +3,7 @@ class UserGroup < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   validates_presence_of :name
+  validates_uniqueness_of :name
   
 	def all_users
 		User.find_by_sql <<-SQL

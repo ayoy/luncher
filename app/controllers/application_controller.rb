@@ -47,15 +47,6 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def require_admin
-      unless current_user_is_admin?
-        store_location
-        flash[:notice] = "You don't have priviledges to access this page"
-        redirect_to account_url
-        return false
-      end
-    end
-    
     def store_location
       session[:return_to] = request.request_uri
     end
